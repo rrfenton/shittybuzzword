@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <style>
+            #player {
+
+
+            }
+            body {
+               font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+               font-weight: 300;
+               color: white;
+            }
+            #player
+            {
+                width: 150%   !important;
+                height: 150%   !important;
+                transform: scale(1.25, 1.25) translate(-15%,-15%);               
+                -webkit-filter: blur(5px);
+                -moz-filter: blur(5px);
+                -o-filter: blur(5px);
+                -ms-filter: blur(5px);
+                filter: blur(5px);
+                position: fixed;
+                z-index: -99;
+            }
+            #ShittyBuzzword {
+                top: 50%;
+                left: 50%;
+                font-size: 800%;
+                position: absolute;
+                margin-left: -50px;
+                margin-top: -25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="player">
+            <!--
+            <iframe frameborder="0" 
+            src="https://www.youtube.com/embed/m5F0Lq03spM?start=8&amp;enablejsapi=1&amp;playerapiid=ytplayer&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;modestbranding=1&amp;iv_load_policy=3"></iframe>
+        -->
+        </div>
+        <span id="ShittyBuzzword" onclick="buzzword();"></span>
+        <script>
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+      
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                  height: '150%',
+                  width: '150%',
+                  videoId: 'm5F0Lq03spM',
+                  playerVars: 'start=8&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;autoplay=1' ,
+                  events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange' : onStateChange
+                    }
+                });
+            }
+            
+            function onPlayerReady(event) {
+                event.target.seekTo(7,true);
+                event.target.setVolume(8);
+                event.target.setLoop(true);
+            }
+            
+            function onStateChange(event){
+                event.target.seekTo(7,true);
+                event.target.playVideo();
+            }
+            document.getElementById("ShittyBuzzword").innerHTML= buzzword();
+            
+            
+function buzzword()
+{
+    verbsDictionary = verbs();
+    verbs = Object.keys(verbsDictionary);
+    indexnum = Math.floor(Math.random() * (verbs.length - 0 +1)) + 0;
+    finalverb = verbs[indexnum];
+    verbitem = verbsDictionary[finalverb];
+    shittyword = ''
+    
+    Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+    
+    if (verbitem.contains("prefix"))
+    {
+        var prefixes = prefix();
+        shittyword += prefixes[(Math.floor(Math.random() * ((prefixes.length-1) - 0 +1)) + 0)];
+    }
+    shittyword += finalverb;
+    if (verbitem.contains("suffix"))
+    {
+        var suffixes = verbsuffix();
+        shittyword += suffixes[(Math.floor(Math.random() * ((suffixes.length-1) - 0 +1)) + 0)-1]
+    }
+    
+    if ((Math.floor(Math.random() * (2 - 0 +1)) + 0) > 1)
+    {
+        var noun = nouns()
+        shittyword += (" "+noun[(Math.floor(Math.random() * ((noun.length-1) - 0 +1)) + 0)-1]);
+    }
+    return shittyword
+}
+
+
+function verbsuffix()
+{
+    var suffixList = [
+        "ive",
+        "al",
+        "acular",
+        "ify",
+        "ate",
+        "ize",
+        "ivate",
+        "ful",
+        "iverse",
+        "ic",
+        "ivation",
+        "icate",
+        ]
+    return suffixList;
+}
+
+function prefix() {
+    var prefixList = [
+        "big ",
+        "",
+        "social ",
+        "pure ",
+        "cloud ",
+        "new ",
+        "re",
+        "de",
+        "non-",
+        "extensive ",
+        "revolutionary ",
+        "incredible ",
+        "un",
+        "gentle ",
+        "dynamic ",
+        "advanced ",
+        "chief ",
+        "extreme ",
+        "truly ",
+        "inherent ",
+        "responsive ",
+        "adaptive ",
+        "celebrated ",
+        "quasi-",
+        "semi-",
+        "exclusive"
+        ]
+    
+    return prefixList;
+}
+
+function verbs()
+{
+    var verbDictionary = 
+    {
+        "creat" : ["prefix", "suffix"],
+        "create" : ["prefix"],
+        "act" : ["prefix", "suffix"],
+        "aperture" : ["prefix"],
+        "design" : ["prefix", "suffix"],
+        "engine" : ["prefix"],
+        "connect" : ["prefix", "suffix"],
+        "thing" : ["prefix", "suffix"],
+        "innov" : ["prefix", "suffix", "noblank"],
+        "tradition" : ["prefix", "suffix"],
+        "compulsion" : ["prefix", "suffix"],
+        "power" : ["prefix", "suffix"],
+        "beaut" : ["prefix", "suffix"],
+        "push" : ["prefix", "suffix"],
+        "pull" : ["prefix", "suffix"],
+        "program" : ["prefix" , "suffix"],
+        "accelerat" : ["prefix", "suffix"],
+        "balanc" : ["prefix", "suffix"],
+        "adjust" : ["prefix", "suffix"],
+        "adapt" : ["prefix", "suffix"],
+        "address" : ["prefix"],
+        "allocat" : ["prefix", "suffix"],
+        "central" : ["prefix", "suffix"],
+        "advanc" : ["prefix", "suffix"],
+        "advance" : ["prefix"],
+        "aid" : ["prefix", "suffix"],
+        "analyz" : ["prefix", "suffix"],
+        "analysis" : ["prefix"],
+        "app" : ["prefix", "suffix"]
+    }
+    
+    
+    return verbDictionary;
+}
+
+function nouns()
+{
+    var nounList = 
+    [
+        "heart",
+        "money",
+        "sapphire",
+        "pulse",
+        "solution",
+        "expert",
+        "program",
+        "programs",
+        "strategy",
+        "strategies",
+        "organization",
+        "plan",
+        "procedure",
+        "personal",
+        "brand",
+        "community",
+        "data",
+        "devops",
+        "cooperative",
+        "aluminum",
+        "intimate",
+        "deep",
+        "life",
+        "human",
+        "internet",
+        "input",
+        "mobile",
+        "generation",
+        "battery",
+        "unibody",
+        "computer",
+        "soul",
+        "spirit",
+        "tech",
+        "interface",
+        "instant",
+        "touch",
+        "app",
+    ]
+    return nounList;
+}
+
+function phrases()
+{
+    var phraseList = 
+    [
+        "future-proof advertising",
+        "internet of things",
+        "responsive interface",
+        "network posthumanization",
+        "interactive development",
+        "open source",
+        "quasi-realtime development cycle",
+        "war on bugs",
+        "humanized data collection",
+        
+        
+    ]
+    return phraseList;
+}
+        </script>
+    </body>
+</html>
