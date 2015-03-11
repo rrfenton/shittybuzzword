@@ -106,13 +106,13 @@ function buzzword()
     if (verbitem.contains("suffix"))
     {
         var suffixes = verbsuffix();
-        shittyword += suffixes[(Math.floor(Math.random() * ((suffixes.length-1) - 0 +1)) + 0)-1]
+        shittyword += suffixes[(Math.floor(Math.random() * ((suffixes.length-1) - 0 +1)) + 0)]
     }
     
     if ((Math.floor(Math.random() * (2 - 0 +1)) + 0) > 1)
     {
         var noun = nouns()
-        shittyword += (" "+noun[(Math.floor(Math.random() * ((noun.length-1) - 0 +1)) + 0)-1]);
+        shittyword += (" "+noun[(Math.floor(Math.random() * ((noun.length-1) - 0 +1)) + 0)]);
     }
     return shittyword
 }
@@ -133,6 +133,9 @@ function verbsuffix()
         "ic",
         "ivation",
         "icate",
+        "ability",
+        "ivative",
+        "able",
         ]
     return suffixList;
 }
@@ -164,7 +167,20 @@ function prefix() {
         "celebrated ",
         "quasi-",
         "semi-",
-        "exclusive"
+        "exclusive ",
+        "results-driven ",
+        "trustworthy ",
+        "Knowledgeable ",
+        "self-assured ",
+        "cultured ",
+        "efficient ",
+        "new ",
+        "selective ",
+        "innovative ",
+        "native ",
+        "rich ",
+        "immergent ",
+        "news",
         ]
     
     return prefixList;
@@ -182,7 +198,7 @@ function verbs()
         "engine" : ["prefix"],
         "connect" : ["prefix", "suffix"],
         "thing" : ["prefix", "suffix"],
-        "innov" : ["prefix", "suffix", "noblank"],
+        "innov" : ["prefix", "suffix"],
         "tradition" : ["prefix", "suffix"],
         "compulsion" : ["prefix", "suffix"],
         "power" : ["prefix", "suffix"],
@@ -202,7 +218,17 @@ function verbs()
         "aid" : ["prefix", "suffix"],
         "analyz" : ["prefix", "suffix"],
         "analysis" : ["prefix"],
-        "app" : ["prefix", "suffix"]
+        "app" : ["prefix", "suffix"],
+        "leader" : ["prefix", "suffix"],
+        "think" : ["prefix", "suffix"],
+        "lead" : ["prefix", "suffix"],
+        "deep" : ["prefix", "suffix"],
+        "hack" : ["prefix", "suffix"],
+        "craft" : ["prefix", "suffix"],
+        "build" : ["prefix", "suffix"],
+        "debug" : ["prefix", "suffix"],
+        "detect" : ["prefix", "suffix"],
+        "jack" : ["prefix", "suffix"],
     }
     
     
@@ -230,11 +256,10 @@ function nouns()
         "brand",
         "community",
         "data",
-        "devops",
+        "dev-ops",
         "cooperative",
         "aluminum",
         "intimate",
-        "deep",
         "life",
         "human",
         "internet",
@@ -251,6 +276,11 @@ function nouns()
         "instant",
         "touch",
         "app",
+        "phone",
+        "device",
+        "hacking",
+        "media",
+        
     ]
     return nounList;
 }
